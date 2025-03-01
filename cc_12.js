@@ -10,3 +10,15 @@ revenueCard.innerHTML = `
   <p>$50,000</p>
 `;
 dashboardContainer.appendChild(revenueCard);
+
+// Task 2: Updating Dashboard Metrics – Working with NodeLists and Arrays
+console.log("********** Updated Metric Cards via Array Conversion **********");
+const metricCards = document.querySelectorAll(".metric-card");
+const metricCardsArray = [...metricCards];
+metricCardsArray.forEach((card) => {
+  const title = card.querySelector("h3");
+  if (title) {
+    title.textContent += " - Updated";
+  }
+  card.style.backgroundColor = "#FFC0CB"; // Baby Pink
+});
