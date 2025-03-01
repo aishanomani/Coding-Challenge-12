@@ -8,6 +8,18 @@
         body {
             background-color: #FFC0CB; /* Baby Pink */
         }
+        .customer-card {
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: #bcbcde; /* Lavender */
+            color: black;
+            padding: 14px 28px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .customer-card:hover {
+            background-color: #83b0be;
+        }
     </style>
 </head>
 <body>
@@ -29,6 +41,14 @@
     <h3>Inventory Management</h3>
     <button id="addProductButton">Add Product</button>
     <ul id="inventoryList"></ul>
+
+    <!-- Task 4 -->
+    <h3>Customer Section</h3>
+    <div id="customerSection">
+    <div class="customer-card">Customer #1</div>
+    <div class="customer-card">Customer #2</div>
+    <div class="customer-card">Customer #3</div>
+    </div>
 
     <script src="cc_12.js"></script>
 </body>

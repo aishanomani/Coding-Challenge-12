@@ -41,4 +41,17 @@ function addProduct(){
   const addProductButton = document.getElementById("addProductButton");
   addProductButton.addEventListener("click", addProduct);
   
-
+// Task 4: Business Customer Section – Handling Event Bubbling
+console.log("********** Demonstrated Event Bubbling in Customer Section **********");
+const customerSection = document.getElementById("customerSection");
+customerSection.addEventListener("click", () => {
+  console.log("Customer Section Clicked");
+});
+const customerCards = document.querySelectorAll(".customer-card");
+customerCards.forEach((card) => {
+  card.style.backgroundColor = "#bcbcde"; // Lavender 
+  card.addEventListener("click", (event) => {
+    console.log("Customer Card Clicked");
+    event.stopPropagation();
+  });
+});
