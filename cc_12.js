@@ -11,7 +11,7 @@ revenueCard.setAttribute("id", "revenueCard");
 // Populate The Card With A Title And A Placeholder Value
 revenueCard.innerHTML = `
   <h3>Revenue</h3>
-  <p>$50,000</p>
+  <p>$0</p>
 `;
 // Append The New Metric Card To The Dashboard Container
 dashboardContainer.appendChild(revenueCard);
@@ -29,7 +29,8 @@ metricCardsArray.forEach((card) => {
   if (title) {
     title.textContent += " - Updated";
   }
-  card.style.backgroundColor = "#FFC0CB"; // Baby Pink
+  // Change Color Using The CSS Class Instead Of Inline Styling
+  card.classList.add("updated-card"); // Baby Pink
 });
 
 
@@ -40,9 +41,16 @@ function addProduct(){
     const productItem = document.createElement("li");
 // Use setAttribute To Add A Class Or A Custom Data Attribute To The <li> (Time)
     productItem.setAttribute("class", "product-item");
-    productItem.setAttribute("data-product-id", Date.now());
+    productItem.dataset.productId = Date.now();
 // Create Text Label
-    productItem.textContent = `Product ${document.querySelectorAll(".product-item").length +1}`
+    function getNextProductNumber() {
+      return document.querySelectorAll(".product-item").length + 1;
+  }
+  productItem.textContent = `Product ${getNextProductNumber()}`;  
+// Ensure That Products With Blank Names Are Not Added
+if (!productItem.textContent.trim()) {
+  return;
+}
 // Remove Product When Clicked
     productItem.addEventListener("click", () => removeProduct(productItem));
 // Add New Product To Inventory List
@@ -72,7 +80,7 @@ const customerCards = document.querySelectorAll(".customer-card");
 customerCards.forEach((card) => {
   card.style.backgroundColor = "#bcbcde"; // Lavender 
   card.addEventListener("click", (event) => {
-    console.log("Customer Card Clicked");
+    console.log(`User clicked: ${event.target.textContent}`);
  // Ensure Parent's Event Handler Does Not Trigger.
     event.stopPropagation();
   });
